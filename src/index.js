@@ -1,15 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./components/App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
+
+import App from "./components/App/App";
+import User from "./components/User/User";
+import Header from "./components/Header/Header";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <Header />
+        <Route path="/" component={App} />
+        <Route path="/user/:code" component={User} />
+        <Route path="/error/:errorMsg" component={Error} />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
