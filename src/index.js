@@ -15,7 +15,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <Header />
-        <Route path="/" component={App} />
+        <Route exact path="/" component={App} />
         <Route path="/user/:code" component={User} />
         <Route path="/error/:errorMsg" component={Error} />
       </Router>
