@@ -1,33 +1,40 @@
 import {
-  SPOTIFY_USER_BEGIN,
+  SPOTIFY_LOGIN_BEGIN,
+  SPOTIFY_LOGIN_SUCCESS,
+  SPOTIFY_LOGIN_FAILURE,
   SPOTIFY_USER_SUCCESS,
-  SPOTIFY_USER_FAILURE,
 } from "../actions/auth.actions";
 
 const initialState = {
   loading: false,
   accessToken: null,
   error: null,
+  user: null,
 };
 
 // prettier-ignore
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case SPOTIFY_USER_BEGIN:
+    case SPOTIFY_LOGIN_BEGIN:
       return {
         ...state,
-        load: action.payload
+        loading: action.payload
       }
-    case SPOTIFY_USER_SUCCESS:
+    case SPOTIFY_LOGIN_SUCCESS:
       return {
         ...state,
         accessToken: action.payload,
         loading: false
       };
-    case SPOTIFY_USER_FAILURE:
+    case SPOTIFY_LOGIN_FAILURE:
       return {
         ...state,
         error: action.payload
+      }
+    case SPOTIFY_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.payload
       }
     default:
       return state;
