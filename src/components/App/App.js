@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import User from "../User/User";
 import Login from "../Login/Login";
 
@@ -8,4 +10,4 @@ function App(props) {
   return <div className="App">{code ? <User params={code} /> : <Login />}</div>;
 }
 
-export default App;
+export default connect((state) => state)(App);

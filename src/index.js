@@ -16,7 +16,7 @@ ReactDOM.render(
       <Router>
         <Header />
         <Route exact path="/" component={App} />
-        <Route path="/user/:code" component={User} />
+        <Route path="/dashboard" component={User} />
         <Route path="/error/:errorMsg" component={Error} />
       </Router>
     </Provider>

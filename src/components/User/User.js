@@ -4,7 +4,7 @@ import { getUser } from "../../actions/auth.actions";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-const UserContainer = styled.main``;
+const UserContainer = styled.section``;
 
 const User = (props) => {
   const { params, authReducer } = props;
@@ -13,11 +13,11 @@ const User = (props) => {
   useEffect(() => {
     const { dispatch } = props;
     dispatch(getUser(params));
-    history.push("/");
+    history.push("/dashboard");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
-  return <UserContainer></UserContainer>;
+  return <UserContainer>Howdy</UserContainer>;
 };
 
 export default connect((state) => state)(User);
