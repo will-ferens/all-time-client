@@ -1,13 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { login } from "../../actions/auth.actions";
+
 import User from "../User/User";
 import Login from "../Login/Login";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
-function App(props) {
-  return <div className="App">{code ? <User params={code} /> : <Login />}</div>;
+class App extends React.Component {
+  componentDidMount() {
+    if (!this.props.authReducer.accessToken) {
+      this.props.dispatch(login(code));
+      this.props.history.push("/");
+    }
+  }
+  renderUserDashboard() {
+    if (this.props.authReducer.accessToken) {
+      const { accessToken } = this.props.authReducer;
+      return <User accessToken={accessToken} />;
+    } else {
+      return <Login />;
+    }
+  }
+  render() {
+    return <div className="App">{this.renderUserDashboard()}</div>;
+  }
 }
 
 export default connect((state) => state)(App);

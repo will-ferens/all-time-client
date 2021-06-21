@@ -1,23 +1,32 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getUser } from "../../actions/auth.actions";
-import { useHistory } from "react-router-dom";
+import { getUser } from "../../actions/user.actions";
+
 import styled from "styled-components";
+import TopArtists from "./TopArtists/TopArtists";
 
 const UserContainer = styled.section``;
+const UserDetails = styled.div``;
 
-const User = (props) => {
-  const { params, authReducer } = props;
-  let history = useHistory();
-
+const User = ({ dispatch, accessToken, user, artists }) => {
   useEffect(() => {
-    const { dispatch } = props;
-    dispatch(getUser(params));
-    history.push("/dashboard");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params]);
-
-  return <UserContainer>Howdy</UserContainer>;
+    dispatch(getUser(accessToken));
+  }, []);
+  return (
+    <UserContainer>
+      <UserDetails>
+        <p>{user.display_name}</p>
+      </UserDetails>
+      <TopArtists artists={artists}></TopArtists>
+    </UserContainer>
+  );
 };
 
-export default connect((state) => state)(User);
+const mapStateToProps = (state) => {
+  return {
+    user: state.userReducer.user,
+    artists: state.userReducer.artists.items,
+  };
+};
+
+export default connect(mapStateToProps, null)(User);
