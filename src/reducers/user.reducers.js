@@ -7,8 +7,8 @@ import {
 const initialState = {
   loading: "idle",
   error: null,
-  user: null,
-  artists: null,
+  user: {},
+  artists: [],
 };
 export default function userReducer(state = initialState, action) {
   switch (action.type) {

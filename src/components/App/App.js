@@ -17,8 +17,7 @@ class App extends Component {
   }
   renderUserDashboard() {
     if (this.props.authReducer.accessToken) {
-      const { accessToken } = this.props.authReducer;
-      return <User accessToken={accessToken} />;
+      return <User />;
     } else {
       return <Login />;
     }
