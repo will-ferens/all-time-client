@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { login } from "../../actions/auth.actions";
@@ -8,7 +8,7 @@ import Login from "../Login/Login";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
-class App extends React.Component {
+class App extends Component {
   componentDidMount() {
     if (!this.props.authReducer.accessToken) {
       this.props.dispatch(login(code));
