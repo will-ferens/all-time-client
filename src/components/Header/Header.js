@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header``;
+export const HeaderContainer = styled.header`
+  background: #d1d8fa;
+`;
 export const HeaderTitle = styled.h1``;
 export const SubTitle = styled.h4``;
 

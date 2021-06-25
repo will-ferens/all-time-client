@@ -23,7 +23,7 @@ const User = () => {
   useEffect(() => {
     dispatch(getUser(accessToken));
     dispatch(getTopArtists(accessToken));
-  }, []);
+  }, [accessToken, dispatch]);
 
   return (
     <UserContainer>
