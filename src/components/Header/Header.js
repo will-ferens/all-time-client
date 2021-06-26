@@ -30,7 +30,6 @@ const Header = () => {
   return (
     <HeaderContainer theme={themeContext}>
       <HeaderTitle>All Time</HeaderTitle>
-      <SubTitle>who's your all time?</SubTitle>
     </HeaderContainer>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { accentFontColor } from "../../themes/themes";
+import { highlightedBorder } from "../../themes/themes";
 import Header from "../Header/Header";
 import ThemeControls from "./ThemeControls";
 
 export const NavContainer = styled.nav`
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${accentFontColor};
+  border-right: 1px solid ${highlightedBorder};
 `;
 
 export const ActionsList = styled.ul``;

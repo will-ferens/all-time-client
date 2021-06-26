@@ -20,11 +20,12 @@ export const bodyBackgroundColor = theme("theme", {
 
 export const highlightedBackgroundColor = theme("theme", {
   coffee: "#cec5be",
-  seaWave: "#d1d8fa",
+  seaWave: "#eff4fb",
 });
 
 export const highlightedBorder = theme("theme", {
-  coffee: "#936094",
+  coffee: "#fff",
+  seaWave: "#c7d1ff",
 });
 
 export const highlightedFontColor = theme("theme", {
@@ -34,7 +35,7 @@ export const highlightedFontColor = theme("theme", {
 
 export const accentFontColor = theme("theme", {
   coffee: "#fff",
-  seaWave: "#3111b1",
+  seaWave: "#fff",
 });
 
 export const secondaryFontColor = theme("theme", {
