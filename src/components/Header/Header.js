@@ -8,16 +8,21 @@ import {
 } from "../../themes/themes";
 
 export const HeaderContainer = styled.header`
-  height: 100px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 20px;
   background: ${highlightedBackgroundColor};
   color: ${highlightedFontColor};
 `;
 export const HeaderTitle = styled.h1`
-  padding: 0 12px 12px;
   margin: 0;
 `;
 export const SubTitle = styled.h4`
   color: ${accentFontColor};
+  margin: 0;
 `;
 
 const Header = () => {
@@ -25,7 +30,7 @@ const Header = () => {
   return (
     <HeaderContainer theme={themeContext}>
       <HeaderTitle>All Time</HeaderTitle>
-      <SubTitle>Who's your all time?</SubTitle>
+      <SubTitle>who's your all time?</SubTitle>
     </HeaderContainer>
   );
 };

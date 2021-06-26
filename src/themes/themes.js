@@ -1,25 +1,42 @@
 import theme from "styled-theming";
 
+export const ThemesArray = [
+  {
+    id: "coffee",
+    name: "coffee",
+    primaryColor: "#471948",
+  },
+  {
+    id: "seaWave",
+    name: "sea wave",
+    primaryColor: "#000098",
+  },
+];
+
 export const bodyBackgroundColor = theme("theme", {
-  default: "#fff",
+  coffee: "#E6D9C8",
   seaWave: "#F5FFFD",
 });
 
 export const highlightedBackgroundColor = theme("theme", {
-  default: "#cec5be",
+  coffee: "#cec5be",
   seaWave: "#d1d8fa",
 });
 
+export const highlightedBorder = theme("theme", {
+  coffee: "#936094",
+});
+
 export const highlightedFontColor = theme("theme", {
-  default: "#471948",
+  coffee: "#471948",
   seaWave: "#000098",
 });
 
 export const accentFontColor = theme("theme", {
-  default: "#fff",
+  coffee: "#fff",
   seaWave: "#3111b1",
 });
 
 export const secondaryFontColor = theme("theme", {
-  default: "#d9ccc9",
+  coffee: "#d9ccc9",
 });
