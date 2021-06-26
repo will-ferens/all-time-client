@@ -7,6 +7,7 @@ import { login } from "../../actions/auth.actions";
 
 import { bodyBackgroundColor } from "../../themes/themes";
 
+import Header from "../Header/Header";
 import User from "../User/User";
 import Login from "../Login/Login";
 
@@ -30,7 +31,10 @@ const App = () => {
 
   return (
     <ThemeProvider theme={{ theme: theme }}>
-      <Container>{accessToken ? <User /> : <Login />}</Container>
+      <Container>
+        <Header />
+        {accessToken ? <User /> : <Login />}
+      </Container>
     </ThemeProvider>
   );
 };
