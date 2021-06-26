@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-import { ThemeContext } from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 import {
   highlightedBackgroundColor,
@@ -10,10 +8,14 @@ import {
 } from "../../themes/themes";
 
 export const HeaderContainer = styled.header`
+  height: 100px;
   background: ${highlightedBackgroundColor};
   color: ${highlightedFontColor};
 `;
-export const HeaderTitle = styled.h1``;
+export const HeaderTitle = styled.h1`
+  padding: 0 12px 12px;
+  margin: 0;
+`;
 export const SubTitle = styled.h4`
   color: ${accentFontColor};
 `;

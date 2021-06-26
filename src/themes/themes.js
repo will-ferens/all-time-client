@@ -19,3 +19,7 @@ export const accentFontColor = theme("theme", {
   default: "#fff",
   seaWave: "#3111b1",
 });
+
+export const secondaryFontColor = theme("theme", {
+  default: "#d9ccc9",
+});

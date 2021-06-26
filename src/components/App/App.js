@@ -7,21 +7,26 @@ import { login } from "../../actions/auth.actions";
 
 import { bodyBackgroundColor } from "../../themes/themes";
 
-import Header from "../Header/Header";
+import Nav from "../Nav/Nav";
 import User from "../User/User";
 import Login from "../Login/Login";
 
+// URL param on new login
 const code = new URLSearchParams(window.location.search).get("code");
 
 const Container = styled.div`
   background-color: ${bodyBackgroundColor};
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+  height: 100%;
 `;
 
 const App = () => {
-  let history = useHistory();
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.authReducer.accessToken);
   const theme = useSelector((state) => state.themeReducer.theme);
+
+  let history = useHistory();
   useEffect(() => {
     if (!accessToken && code) {
       dispatch(login(code));
@@ -32,7 +37,7 @@ const App = () => {
   return (
     <ThemeProvider theme={{ theme: theme }}>
       <Container>
-        <Header />
+        <Nav />
         {accessToken ? <User /> : <Login />}
       </Container>
     </ThemeProvider>
