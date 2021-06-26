@@ -11,7 +11,13 @@ const ThemeControls = () => {
     <ThemeButtonsContainer>
       <p>Themes</p>
       {ThemesArray.map((theme) => {
-        return <ThemeButton theme={theme} currentTheme={themeContext} />;
+        return (
+          <ThemeButton
+            key={theme.id}
+            theme={theme}
+            currentTheme={themeContext}
+          />
+        );
       })}
     </ThemeButtonsContainer>
   );

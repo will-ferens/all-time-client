@@ -21,7 +21,6 @@ const ThemeButton = ({ theme, currentTheme }) => {
   const dispatch = useDispatch();
   return (
     <ThemeButtonLink
-      key={theme.id}
       theme={theme.id}
       className={theme.id === currentTheme.theme ? "active" : ""}
       onClick={() => dispatch(setTheme(theme.id))}
