@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import TopBar from "../Styled/ReusuableStyledComponents";
 import { loginUrl } from "../../api/spotify";
 
 import {
@@ -43,7 +42,6 @@ const Login = () => {
   const themeContext = useContext(ThemeContext);
   return (
     <LoginContainer theme={themeContext}>
-      <TopBar background={highlightedBackgroundColor} />
       <LoginWrapper>
         <CtaHeader>Your Spotify Stats.</CtaHeader>
         <p>Get stats about your top artists, tracks, and genres.</p>
