@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  highlightedBorder,
+  highlightedBackgroundColor,
+  highlightedFontColor,
+} from "../../../themes/themes";
+import { mediaQueries } from "../../../constants/styles";
 
 export const ArtistFigure = styled.figure`
-  margin: 12px;
   img {
     border-radius: 4px;
     transition: all 0.3s;
@@ -21,9 +26,9 @@ export const HoverTitleWrapper = styled.div`
   h4 {
     margin: 0 24px;
     padding: 8px 12px;
-    border: 1px solid #f0005b;
-    background-color: #260922;
-    color: #d63aa7;
+    border: 1px solid ${highlightedBorder};
+    background-color: ${highlightedBackgroundColor};
+    color: ${highlightedFontColor};
   }
   span {
     padding-right: 4px;
@@ -32,23 +37,38 @@ export const HoverTitleWrapper = styled.div`
 export const FavoriteWrapper = styled.article`
   position: relative;
   width: 33%;
-
+  margin: 12px;
+  text-align: center;
   &:hover {
     div${HoverTitleWrapper} {
       bottom: 50px;
       opacity: 1;
     }
     img {
-      opacity: 0.7;
+      opacity: 1.7;
     }
+  }
+  @media ${mediaQueries.tablet} {
+    width: 28%;
+    margin: 0;
   }
 `;
 
 const Favorite = ({ artist, i }) => {
+  let srcSet = "";
+  for (let i = 0; i < artist.images.length; i++) {
+    srcSet = srcSet.concat(
+      `${artist.images[i].url} ${artist.images[i].width}w,`
+    );
+  }
   return (
     <FavoriteWrapper>
       <ArtistFigure>
-        <img src={artist.images[1].url} alt={artist.name} />
+        <img
+          alt={artist.name}
+          srcSet={srcSet}
+          sizes="(max-width: 540px) 90px, (max-width: 768px) 150px, (max-width: 991px) 220px, 320px"
+        />
       </ArtistFigure>
       <HoverTitleWrapper>
         <h4>

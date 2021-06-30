@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-
+import TopBar from "../Styled/ReusuableStyledComponents";
 import { loginUrl } from "../../api/spotify";
 
 import {
   highlightedFontColor,
-  secondaryFontColor,
   highlightedBackgroundColor,
   accentFontColor,
 } from "../../themes/themes";
@@ -15,12 +14,6 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const TopBar = styled.div`
-  height: 75px;
-  width: 100%;
-  background-color: ${highlightedBackgroundColor};
 `;
 
 export const LoginWrapper = styled.div`
@@ -50,7 +43,7 @@ const Login = () => {
   const themeContext = useContext(ThemeContext);
   return (
     <LoginContainer theme={themeContext}>
-      <TopBar />
+      <TopBar background={highlightedBackgroundColor} />
       <LoginWrapper>
         <CtaHeader>Your Spotify Stats.</CtaHeader>
         <p>Get stats about your top artists, tracks, and genres.</p>

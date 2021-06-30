@@ -6,6 +6,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { login } from "../../actions/auth.actions";
 
 import { bodyBackgroundColor } from "../../themes/themes";
+import { mediaQueries } from "../../constants/styles";
 
 import Nav from "../Nav/Nav";
 import User from "../User/User";
@@ -19,6 +20,9 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: minmax(150px, 25%) 1fr;
   height: 100%;
+  @media ${mediaQueries.laptop} {
+    display: block;
+  }
 `;
 
 const App = () => {

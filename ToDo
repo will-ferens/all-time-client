@@ -1,0 +1,9 @@
+[ ] Style artists table
+[ ] Make TopArtists reusable for tracks and genres
+[ ] Make another theme
+[ ] Clean up styles, create mobile view
+[ ] Refactor 
+  [ ] actions / reducers 
+  [ ] look into redux toolkit / createSlice and createApi
+  [ ] file architecture
+[ ] Launch
