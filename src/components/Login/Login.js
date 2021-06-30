@@ -2,14 +2,10 @@ import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { loginUrl } from "../../api/spotify";
 
-import {
-  highlightedFontColor,
-  highlightedBackgroundColor,
-  accentFontColor,
-} from "../../themes/themes";
+import { highlightedFontColor, accentFontColor } from "../../themes/themes";
 
 export const LoginContainer = styled.div`
-  width: 100%;
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;

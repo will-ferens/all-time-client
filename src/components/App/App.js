@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 
 import { login } from "../../actions/auth.actions";
-
 import { bodyBackgroundColor } from "../../themes/themes";
 import { mediaQueries } from "../../constants/styles";
 
@@ -16,13 +15,25 @@ import Login from "../Login/Login";
 const code = new URLSearchParams(window.location.search).get("code");
 
 const Container = styled.div`
-  background-color: ${bodyBackgroundColor};
   display: grid;
-  grid-template-columns: minmax(150px, 25%) 1fr;
-  height: 100%;
-  @media ${mediaQueries.laptop} {
-    display: block;
-  }
+  background-color: ${bodyBackgroundColor};
+  ${({ navLayout }) =>
+    !navLayout &&
+    `
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+  `}
+  ${({ navLayout }) =>
+    navLayout &&
+    `
+    grid-template-columns: minmax(150px, 25%) 1fr;
+    align-items: inherit;
+    justify-content: inherit;
+    @media ${mediaQueries.laptop} {
+      display: block;
+    }
+  `};
 `;
 
 const App = () => {
@@ -40,8 +51,8 @@ const App = () => {
 
   return (
     <ThemeProvider theme={{ theme: theme }}>
-      <Container>
-        <Nav />
+      <Container navLayout={accessToken ? true : false}>
+        {accessToken ? <Nav /> : null}
         {accessToken ? <User /> : <Login />}
       </Container>
     </ThemeProvider>
