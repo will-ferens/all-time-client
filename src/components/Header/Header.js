@@ -4,8 +4,10 @@ import styled, { ThemeContext } from "styled-components";
 import {
   highlightedBackgroundColor,
   highlightedFontColor,
+  highlightedBorder,
   accentFontColor,
 } from "../../themes/themes";
+import { mediaQueries, border } from "../../constants/styles";
 
 export const HeaderContainer = styled.header`
   height: 75px;
@@ -16,6 +18,10 @@ export const HeaderContainer = styled.header`
   padding: 0 20px;
   background: ${highlightedBackgroundColor};
   color: ${highlightedFontColor};
+  border-bottom: ${border} ${highlightedBorder};
+  @media ${mediaQueries.laptop} {
+    border-bottom: none;
+  }
 `;
 export const HeaderTitle = styled.h1`
   margin: 0;

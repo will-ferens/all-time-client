@@ -27,10 +27,14 @@ const Container = styled.div`
   ${({ navLayout }) =>
     navLayout &&
     `
+    height: 100vh;
+    width: 100vw;
     grid-template-columns: minmax(150px, 25%) 1fr;
     align-items: inherit;
     justify-content: inherit;
     @media ${mediaQueries.laptop} {
+      height: auto;
+      width: auto;
       display: block;
     }
   `};

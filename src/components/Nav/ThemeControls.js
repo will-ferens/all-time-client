@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-import { ThemesArray } from "../../themes/themes";
+import { ThemesArray, highlightedBackgroundColor } from "../../themes/themes";
+import { mediaQueries } from "../../constants/styles.js";
 import ThemeButton from "./ThemeButton";
 
-export const ThemeButtonsContainer = styled.div``;
+export const ThemeButtonsContainer = styled.div`
+  padding: 0 20px;
+  @media ${mediaQueries.laptop} {
+    background: ${highlightedBackgroundColor};
+  }
+`;
 const ThemeControls = () => {
   const themeContext = useContext(ThemeContext);
   return (
     <ThemeButtonsContainer>
-      <p>Themes</p>
       {ThemesArray.map((theme) => {
         return (
           <ThemeButton

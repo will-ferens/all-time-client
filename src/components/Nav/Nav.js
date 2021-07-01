@@ -1,22 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { highlightedBorder } from "../../themes/themes";
 import Header from "../Header/Header";
 import ThemeControls from "./ThemeControls";
+import { highlightedBorder } from "../../themes/themes";
+import { border } from "../../constants/styles";
 
 export const NavContainer = styled.nav`
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${highlightedBorder};
+  justify-content: space-between;
+  border-right: ${border} ${highlightedBorder};
 `;
-
-export const ActionsList = styled.ul``;
 
 const Nav = () => {
   return (
     <NavContainer>
       <Header />
-      <ActionsList></ActionsList>
       <ThemeControls />
     </NavContainer>
   );

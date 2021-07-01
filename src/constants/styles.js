@@ -4,3 +4,7 @@ export const mediaQueries = {
   tablet: `(max-width: 768px)`,
   mobile: `(max-width: 540px)`,
 };
+
+export const border = `1px solid`;
+export const boxPaddingHigh = `24px 12px`;
+export const boxPaddingWide = `12px 24px`;
