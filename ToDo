@@ -1,14 +1,17 @@
-[x] Style artists table
-[x] create mobile view
-  [ ] clean up Nav / Header
-[x] login look and feel
-[ ] Nav / Main spacing
+[x] Login
+[x] Display Top Artists
+[x] Theme Context
+[x] Styles
+
 [ ] Make TopArtists reusable for tracks and genres
   [ ] past month, past 6 moths, all time
   [ ] pagination on lists
+
 [ ] Make another theme
+
+[ ] Launch
+
 [ ] Refactor 
   [ ] actions / reducers 
   [ ] look into redux toolkit / createSlice and createApi
   [ ] file architecture
-[ ] Launch
