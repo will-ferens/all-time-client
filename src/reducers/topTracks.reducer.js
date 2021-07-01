@@ -18,9 +18,9 @@ export const userTopTracks = createReducer(initialState, (builder) => {
       return { ...state, loading: action.payload };
     })
     .addCase(SPOTIFY_USER_TRACKS_SUCESS, (state, action) => {
-      return { ...state, topTracks: action.payload };
+      return { ...state, topTracks: action.payload, loading: "fetched" };
     })
     .addCase(SPOTIFY_USER_TRACKS_FAIL, (state, action) => {
-      return { ...state, error: action.payload };
+      return { ...state, error: action.payload, loading: "failed" };
     });
 });

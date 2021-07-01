@@ -17,7 +17,7 @@ export const getTopTracks = (accessToken, range) => async (dispatch) => {
     const topTracks = await spotifyApi.getMyTopTracks({
       time_range: range ? range : "long_term",
     });
-    dispatch(SPOTIFY_USER_TRACKS_SUCESS(topTracks));
+    dispatch(SPOTIFY_USER_TRACKS_SUCESS(topTracks.body.items));
   } catch (err) {
     dispatch(SPOTIFY_USER_TRACKS_FAIL(err.message));
   }

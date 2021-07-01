@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Favorite from "./Favorite";
-import Artist from "./Artist";
+import ListItem from "./ListItem";
 import {
   highlightedBorder,
   highlightedBackgroundColor,
@@ -55,29 +55,41 @@ export const Table = styled.table`
   }
 `;
 
-const TopList = ({ artists, theme }) => {
-  const topFive = artists.slice(0, 3);
+const TopList = ({ list, listInfo, theme }) => {
+  let topThree;
+  if (list.id === "topArtists") {
+    topThree = list.slice(0, 3);
+  }
   return (
     <TopListContainer>
-      <TopListHeader>Your Top Artists</TopListHeader>
-      <FavoritesWrapper>
-        {topFive.map((artist, index) => {
-          return (
-            <Favorite key={`fav-${artist.id}`} artist={artist} i={index} />
-          );
-        })}
-      </FavoritesWrapper>
+      <TopListHeader>Your Top {listInfo.name}</TopListHeader>
+      {topThree ? (
+        <FavoritesWrapper>
+          {topThree.map((artist, index) => {
+            return (
+              <Favorite key={`fav-${artist.id}`} artist={artist} i={index} />
+            );
+          })}
+        </FavoritesWrapper>
+      ) : null}
       <Table>
         <thead>
           <tr>
             <th>Position</th>
-            <th>Artist</th>
+            <th>{listInfo.name}</th>
           </tr>
         </thead>
         <tbody>
-          {artists.map((artist, index) => {
+          {list.map((item, index) => {
             return (
-              <Artist i={index} key={artist.id} artist={artist} theme={theme} />
+              <ListItem
+                i={index}
+                key={item.id}
+                item={item}
+                album={item.album ? item.album : false}
+                artists={item.artists ? item.artists : false}
+                theme={theme}
+              />
             );
           })}
         </tbody>
