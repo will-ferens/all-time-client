@@ -1,11 +1,12 @@
 import spotify from "spotify-web-api-node";
+import { clientId } from "../api/spotify";
 
 export const SPOTIFY_USER_ARTIST_BEGIN = "SPOTIFY_USER_ARTIST_BEGIN";
 export const SPOTIFY_USER_ARTIST_SUCCESS = "SPOTIFY_USER_ARTIST_SUCCESS";
 export const SPOTIFY_USER_ARTIST_FAILURE = "SPOTIFY_USER_ARTIST_FAILURE";
 
 export const spotifyApi = new spotify({
-  clientId: "4cf4914b17c340e68221b922b1d20336",
+  clientId: clientId,
 });
 
 export const getTopArtists = (accessToken, range) => async (dispatch) => {

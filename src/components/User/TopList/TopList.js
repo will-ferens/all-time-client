@@ -14,12 +14,12 @@ import {
   boxPaddingWide,
 } from "../../../constants/styles";
 
-export const TopArtistsContainer = styled.div`
+export const TopListContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
-export const TopArtistsHeader = styled.h2`
+export const TopListHeader = styled.h2`
   padding: 24px 12px 23px 12px;
   background: ${highlightedBackgroundColor};
   color: ${highlightedFontColor};
@@ -55,11 +55,11 @@ export const Table = styled.table`
   }
 `;
 
-const TopArtists = ({ artists, theme }) => {
+const TopList = ({ artists, theme }) => {
   const topFive = artists.slice(0, 3);
   return (
-    <TopArtistsContainer>
-      <TopArtistsHeader>Your Top Artists</TopArtistsHeader>
+    <TopListContainer>
+      <TopListHeader>Your Top Artists</TopListHeader>
       <FavoritesWrapper>
         {topFive.map((artist, index) => {
           return (
@@ -82,8 +82,8 @@ const TopArtists = ({ artists, theme }) => {
           })}
         </tbody>
       </Table>
-    </TopArtistsContainer>
+    </TopListContainer>
   );
 };
 
-export default TopArtists;
+export default TopList;

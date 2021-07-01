@@ -3,8 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../actions/user.actions";
 import { getTopArtists } from "../../actions/top_artists.actions";
 import styled, { ThemeContext } from "styled-components";
-import TopArtists from "./TopArtists/TopArtists";
+import TopList from "./TopList/TopList";
 
+const userTopLists = [
+  {
+    id: "topArtists",
+  },
+  {
+    id: "topTracks",
+  },
+  {
+    id: "topGenres",
+  },
+];
 const UserContainer = styled.section`
   width: 100%;
   overflow: scroll;
@@ -23,7 +34,7 @@ const User = () => {
 
   return (
     <UserContainer theme={themeContext}>
-      <TopArtists artists={artists} theme={themeContext} />
+      <TopList artists={artists} theme={themeContext} />
     </UserContainer>
   );
 };
