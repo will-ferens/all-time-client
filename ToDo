@@ -2,10 +2,10 @@
 [x] Display Top Artists
 [x] Theme Context
 [x] Styles
+[x] Make TopArtists reusable for tracks
 
-[ ] Make TopArtists reusable for tracks and genres
-  [ ] past month, past 6 moths, all time
-  [ ] pagination on lists
+[ ] past month, past 6 moths, all time
+[ ] pagination on lists
 
 [ ] Make another theme
 

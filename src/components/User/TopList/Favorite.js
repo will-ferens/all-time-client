@@ -7,7 +7,7 @@ import {
 } from "../../../themes/themes";
 import { mediaQueries } from "../../../constants/styles";
 
-export const ArtistFigure = styled.figure`
+export const ItemFigure = styled.figure`
   img {
     border-radius: 4px;
     transition: all 0.3s;
@@ -54,26 +54,24 @@ export const FavoriteWrapper = styled.article`
   }
 `;
 
-const Favorite = ({ artist, i }) => {
+const Favorite = ({ item, images, i }) => {
   let srcSet = "";
-  for (let i = 0; i < artist.images.length; i++) {
-    srcSet = srcSet.concat(
-      `${artist.images[i].url} ${artist.images[i].width}w,`
-    );
+  for (let i = 0; i < images.length; i++) {
+    srcSet = srcSet.concat(`${images[i].url} ${images[i].width}w,`);
   }
   return (
     <FavoriteWrapper>
-      <ArtistFigure>
+      <ItemFigure>
         <img
-          alt={artist.name}
+          alt={item.name}
           srcSet={srcSet}
           sizes="(max-width: 540px) 90px, (max-width: 768px) 150px, (max-width: 991px) 220px, 320px"
         />
-      </ArtistFigure>
+      </ItemFigure>
       <HoverTitleWrapper>
         <h4>
           <span>{i + 1}.</span>
-          {artist.name}
+          {item.name}
         </h4>
       </HoverTitleWrapper>
     </FavoriteWrapper>

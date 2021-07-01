@@ -18,6 +18,9 @@ export const InfoCellWrapper = styled.div`
     border-radius: 4px;
     margin-right: 16px;
   }
+  .track-artists {
+    align-self: center;
+  }
 `;
 export const PositionWrapper = styled.div`
   display: flex;
@@ -42,12 +45,16 @@ const ListItem = ({ item, album, artists, i }) => {
         <InfoCellWrapper>
           {artistImage ? <img src={artistImage} alt={item.name} /> : null}
           {albumImage ? <img src={albumImage} alt={album.name} /> : null}
-          <p>{item.name}</p>
-          {artists
-            ? artists.map((artist, i) => {
-                return <span>{artist.name}</span>;
-              })
-            : null}
+          <div className="track-artists">
+            <p>{item.name}</p>
+            {artists
+              ? artists.map((artist, i) => {
+                  return (
+                    <span key={`artists${item.id}${i}`}>{artist.name}</span>
+                  );
+                })
+              : null}
+          </div>
         </InfoCellWrapper>
       </td>
     </TableRow>

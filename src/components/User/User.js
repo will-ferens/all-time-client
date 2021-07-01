@@ -28,11 +28,6 @@ const User = () => {
       name: "Tracks",
       list: tracks,
     },
-    {
-      id: "topGenres",
-      name: "Genres",
-      list: [],
-    },
   ];
   useEffect(() => {
     dispatch(getUser(accessToken));
@@ -44,7 +39,12 @@ const User = () => {
     <UserContainer theme={themeContext}>
       {userTopLists.map((group) => {
         return (
-          <TopList listInfo={group} list={group.list} theme={themeContext} />
+          <TopList
+            key={group.id}
+            listInfo={group}
+            list={group.list}
+            theme={themeContext}
+          />
         );
       })}
     </UserContainer>

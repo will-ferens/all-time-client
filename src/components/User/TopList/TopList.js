@@ -56,18 +56,21 @@ export const Table = styled.table`
 `;
 
 const TopList = ({ list, listInfo, theme }) => {
-  let topThree;
-  if (list.id === "topArtists") {
-    topThree = list.slice(0, 3);
-  }
+  const topThree = list.slice(0, 3);
   return (
     <TopListContainer>
       <TopListHeader>Your Top {listInfo.name}</TopListHeader>
       {topThree ? (
         <FavoritesWrapper>
-          {topThree.map((artist, index) => {
+          {topThree.map((item, index) => {
+            let images = item.album ? item.album.images : item.images;
             return (
-              <Favorite key={`fav-${artist.id}`} artist={artist} i={index} />
+              <Favorite
+                key={`fav-${item.id}`}
+                item={item}
+                images={images}
+                i={index}
+              />
             );
           })}
         </FavoritesWrapper>
