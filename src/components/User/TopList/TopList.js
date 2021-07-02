@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Favorite from "./Favorite";
 import ListItem from "./ListItem";
+import RangeFilter from "./RangeFilter";
 import {
   highlightedBorder,
   highlightedBackgroundColor,
@@ -39,10 +40,17 @@ export const FavoritesWrapper = styled.div`
   }
 `;
 
+export const ListWrapper = styled.div`
+  width: 80%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Table = styled.table`
   border-collapse: collapse;
   align-self: center;
-  width: 80%;
+  width: 100%;
   border: ${border}${highlightedBorder};
   margin-bottom: 42px;
   thead {
@@ -79,30 +87,33 @@ const TopList = ({ list, listInfo, theme }) => {
           })}
         </FavoritesWrapper>
       ) : null}
-      <Table>
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>{listInfo.name}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((item, index) => {
-            let album = item.album ? item.album : false;
-            let artists = item.artists ? item.artists : false;
-            return (
-              <ListItem
-                i={index}
-                key={item.id}
-                item={item}
-                album={album}
-                artists={artists}
-                theme={theme}
-              />
-            );
-          })}
-        </tbody>
-      </Table>
+      <ListWrapper>
+        <RangeFilter />
+        <Table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>{listInfo.name}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list.map((item, index) => {
+              let album = item.album ? item.album : false;
+              let artists = item.artists ? item.artists : false;
+              return (
+                <ListItem
+                  i={index}
+                  key={item.id}
+                  item={item}
+                  album={album}
+                  artists={artists}
+                  theme={theme}
+                />
+              );
+            })}
+          </tbody>
+        </Table>
+      </ListWrapper>
     </TopListContainer>
   );
 };
