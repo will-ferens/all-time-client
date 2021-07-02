@@ -13,22 +13,24 @@ const UserContainer = styled.section`
 const User = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.authReducer.accessToken);
-  const artists = useSelector((state) => state.userTopArtists.topArtists);
-  const tracks = useSelector((state) => state.userTopTracks.topTracks);
+  const artists = useSelector((state) => state.userTopArtists);
+  const tracks = useSelector((state) => state.userTopTracks);
   const userTopLists = [
     {
       id: "topArtists",
       name: "Artists",
       fetchList: getTopArtists,
       token: accessToken,
-      list: artists,
+      list: artists.topArtists,
+      range: artists.range,
     },
     {
       id: "topTracks",
       name: "Tracks",
       fetchList: getTopTracks,
       token: accessToken,
-      list: tracks,
+      list: tracks.topTracks,
+      range: tracks.range,
     },
   ];
   useEffect(() => {

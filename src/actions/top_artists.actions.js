@@ -6,6 +6,7 @@ export const SPOTIFY_USER_ARTIST_BEGIN = createAction("artists/fetch/begin");
 export const SPOTIFY_USER_ARTIST_SUCCESS = createAction(
   "artists/fetch/succeed"
 );
+export const SPOTIFY_USER_ARTIST_RANGE = createAction("artists/fetch/range");
 export const SPOTIFY_USER_ARTIST_FAILURE = createAction("artists/fetch/fail");
 
 export const spotifyApi = new spotify({
@@ -20,6 +21,7 @@ export const getTopArtists = (accessToken, range) => async (dispatch) => {
       time_range: range ? range : "long_term",
     });
     dispatch(SPOTIFY_USER_ARTIST_SUCCESS(topArtists.body.items));
+    dispatch(SPOTIFY_USER_ARTIST_RANGE(range ? range : "long_term"));
   } catch (err) {
     dispatch(SPOTIFY_USER_ARTIST_FAILURE(err.message));
   }

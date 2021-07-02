@@ -12,5 +12,5 @@
 
 [ ] Refactor 
   [x] actions / reducers 
-  [ ] look into redux toolkit / createSlice and createApi
+  [ ] look into redux toolkit / createSlice
   [ ] file architecture

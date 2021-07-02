@@ -22,6 +22,15 @@ const RangeFilterButton = styled.button`
   border: 1px solid ${highlightedBorder};
   background-color: ${accentFontColor};
   color: ${highlightedFontColor};
+  &.active {
+    background-color: ${highlightedBackgroundColor};
+    &:hover {
+      background-color: ${highlightedBackgroundColor};
+      color: ${highlightedFontColor};
+      font-weight: 500;
+      cursor: default;
+    }
+  }
   &:before {
     display: block;
     content: attr(title);
@@ -41,17 +50,14 @@ const ranges = [
   {
     id: "long_term",
     name: "All time",
-    active: false,
   },
   {
     id: "medium_term",
     name: "Past 6 months",
-    active: false,
   },
   {
     id: "short_term",
     name: "This month",
-    active: false,
   },
 ];
 
@@ -64,6 +70,7 @@ const RangeFilter = ({ listInfo }) => {
           onClick={() => dispatch(listInfo.fetchList(listInfo.token, range.id))}
           key={range.id}
           title={range.name}
+          className={range.id === listInfo.range ? "active" : ""}
         >
           {range.name}
         </RangeFilterButton>

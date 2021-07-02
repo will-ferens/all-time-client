@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { highlightedBorder } from "../../../themes/themes";
+import {
+  highlightedBorder,
+  highlightedFontColor,
+} from "../../../themes/themes";
 
 export const TableRow = styled.tr`
   box-sizing: border-box;
@@ -28,7 +31,7 @@ export const InfoCellWrapper = styled.div`
     }
     span {
       font-weight: 500;
-      color: #6b7280;
+      color: ${highlightedFontColor};
     }
   }
 `;
@@ -36,7 +39,7 @@ export const PositionWrapper = styled.div`
   display: flex;
   justify-content: center;
   font-weight: 700;
-  color: #6b7280;
+  color: ${highlightedFontColor};
 `;
 
 const ListItem = ({ item, album, artists, i }) => {
