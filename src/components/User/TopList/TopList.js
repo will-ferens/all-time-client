@@ -45,12 +45,11 @@ export const ListWrapper = styled.div`
   align-self: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Table = styled.table`
   border-collapse: collapse;
-  align-self: center;
-  width: 100%;
   border: ${border}${highlightedBorder};
   margin-bottom: 42px;
   thead {

@@ -11,6 +11,7 @@ import {
 
 const RangeFilterContainer = styled.div`
   margin: 12px 0;
+  display: flex;
 `;
 const RangeFilterButton = styled.button`
   padding: 8px 12px;

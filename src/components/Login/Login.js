@@ -9,6 +9,7 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 32px;
 `;
 
 export const LoginWrapper = styled.div`
