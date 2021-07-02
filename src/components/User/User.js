@@ -7,7 +7,8 @@ import TopList from "./TopList/TopList";
 
 const UserContainer = styled.section`
   width: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const User = () => {

@@ -17,7 +17,7 @@ export const TableRow = styled.tr`
     }
     @media ${mediaQueries.mobile} {
       &:first-child {
-        width: auto;
+        width: 10%;
       }
     }
   }
@@ -38,6 +38,9 @@ export const InfoCellWrapper = styled.div`
     span {
       font-weight: 500;
       color: ${highlightedFontColor};
+    }
+    @media ${mediaQueries.mobile} {
+      max-width: 150px;
     }
   }
 `;
