@@ -1,4 +1,4 @@
-import { SEAWAVE, COFFEE } from "../actions/theme.action";
+import { SEAWAVE, COFFEE, LAVENDER } from "../actions/theme.action";
 
 const initialState = { theme: "seaWave" };
 
@@ -7,6 +7,8 @@ export default function themeReducer(state = initialState, action) {
     case SEAWAVE:
       return { ...state, theme: action.payload };
     case COFFEE:
+      return { ...state, theme: action.payload };
+    case LAVENDER:
       return { ...state, theme: action.payload };
     default:
       return state;
