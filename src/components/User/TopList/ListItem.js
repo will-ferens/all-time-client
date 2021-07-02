@@ -4,6 +4,7 @@ import {
   highlightedBorder,
   highlightedFontColor,
 } from "../../../themes/themes";
+import { mediaQueries } from "../../../constants/styles";
 
 export const TableRow = styled.tr`
   box-sizing: border-box;
@@ -13,6 +14,11 @@ export const TableRow = styled.tr`
     padding: 12px 24px;
     &:first-child {
       width: 30%;
+    }
+    @media ${mediaQueries.mobile} {
+      &:first-child {
+        width: auto;
+      }
     }
   }
 `;
