@@ -41,7 +41,7 @@ export const FavoritesWrapper = styled.div`
 `;
 
 export const ListWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,7 @@ export const Table = styled.table`
   border-collapse: collapse;
   border: ${border}${highlightedBorder};
   margin-bottom: 42px;
+  width: 80%;
   thead {
     tr {
       th {
