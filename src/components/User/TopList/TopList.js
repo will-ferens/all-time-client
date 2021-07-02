@@ -67,7 +67,7 @@ export const Table = styled.table`
   }
 `;
 
-const TopList = ({ list, listInfo, theme }) => {
+const TopList = ({ list, listInfo }) => {
   const topThree = list.slice(0, 3);
   return (
     <TopListContainer>
@@ -88,7 +88,7 @@ const TopList = ({ list, listInfo, theme }) => {
         </FavoritesWrapper>
       ) : null}
       <ListWrapper>
-        <RangeFilter />
+        <RangeFilter listInfo={listInfo} />
         <Table>
           <thead>
             <tr>
@@ -107,7 +107,6 @@ const TopList = ({ list, listInfo, theme }) => {
                   item={item}
                   album={album}
                   artists={artists}
-                  theme={theme}
                 />
               );
             })}

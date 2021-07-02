@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../actions/user.actions";
 import { getTopArtists } from "../../actions/top_artists.actions";
 import { getTopTracks } from "../../actions/top_tracks.actions";
-import styled, { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import TopList from "./TopList/TopList";
 
 const UserContainer = styled.section`
@@ -13,7 +13,6 @@ const UserContainer = styled.section`
 
 const User = () => {
   const dispatch = useDispatch();
-  const themeContext = useContext(ThemeContext);
   const accessToken = useSelector((state) => state.authReducer.accessToken);
   const artists = useSelector((state) => state.userArtists.topArtists);
   const tracks = useSelector((state) => state.userTopTracks.topTracks);
@@ -21,11 +20,15 @@ const User = () => {
     {
       id: "topArtists",
       name: "Artists",
+      fetchList: getTopArtists,
+      token: accessToken,
       list: artists,
     },
     {
       id: "topTracks",
       name: "Tracks",
+      fetchList: getTopTracks,
+      token: accessToken,
       list: tracks,
     },
   ];
@@ -36,16 +39,9 @@ const User = () => {
   }, [accessToken, dispatch]);
 
   return (
-    <UserContainer theme={themeContext}>
+    <UserContainer>
       {userTopLists.map((group) => {
-        return (
-          <TopList
-            key={group.id}
-            listInfo={group}
-            list={group.list}
-            theme={themeContext}
-          />
-        );
+        return <TopList key={group.id} listInfo={group} list={group.list} />;
       })}
     </UserContainer>
   );
