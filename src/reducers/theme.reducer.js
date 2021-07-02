@@ -1,16 +1,17 @@
+import { createReducer } from "@reduxjs/toolkit";
 import { SEAWAVE, COFFEE, LAVENDER } from "../actions/theme.action";
 
 const initialState = { theme: "seaWave" };
 
-export default function themeReducer(state = initialState, action) {
-  switch (action.type) {
-    case SEAWAVE:
+export const themeReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(SEAWAVE, (state, action) => {
       return { ...state, theme: action.payload };
-    case COFFEE:
+    })
+    .addCase(COFFEE, (state, action) => {
       return { ...state, theme: action.payload };
-    case LAVENDER:
+    })
+    .addCase(LAVENDER, (state, action) => {
       return { ...state, theme: action.payload };
-    default:
-      return state;
-  }
-}
+    });
+});

@@ -6,6 +6,7 @@ import {
   highlightedBorder,
   highlightedBackgroundColor,
   highlightedFontColor,
+  accentFontColor,
 } from "../../../themes/themes";
 
 import { border } from "../../../constants/styles";
@@ -16,9 +17,24 @@ const RangeFilterContainer = styled.div`
 const RangeFilterButton = styled.button`
   padding: 8px 12px;
   margin: 0 8px 0 0;
-  background: ${highlightedBackgroundColor};
-  border: ${border}${highlightedBorder};
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid ${highlightedBorder};
+  background-color: ${accentFontColor};
   color: ${highlightedFontColor};
+  &:before {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  &:hover {
+    background-color: ${highlightedFontColor};
+    font-weight: 600;
+    color: ${accentFontColor};
+  }
 `;
 
 const ranges = [
@@ -47,6 +63,7 @@ const RangeFilter = ({ listInfo }) => {
         <RangeFilterButton
           onClick={() => dispatch(listInfo.fetchList(listInfo.token, range.id))}
           key={range.id}
+          title={range.name}
         >
           {range.name}
         </RangeFilterButton>

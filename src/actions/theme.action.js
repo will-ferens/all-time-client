@@ -1,6 +1,8 @@
-export const SEAWAVE = "seaWave";
-export const COFFEE = "coffee";
-export const LAVENDER = "lavender";
+import { createAction } from "@reduxjs/toolkit";
+
+export const SEAWAVE = createAction("seaWave");
+export const COFFEE = createAction("coffee");
+export const LAVENDER = createAction("lavender");
 
 export const setTheme = (theme) => {
   return {

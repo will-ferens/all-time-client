@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../actions/user.actions";
 import { getTopArtists } from "../../actions/top_artists.actions";
 import { getTopTracks } from "../../actions/top_tracks.actions";
 import styled from "styled-components";
@@ -14,7 +13,7 @@ const UserContainer = styled.section`
 const User = () => {
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.authReducer.accessToken);
-  const artists = useSelector((state) => state.userArtists.topArtists);
+  const artists = useSelector((state) => state.userTopArtists.topArtists);
   const tracks = useSelector((state) => state.userTopTracks.topTracks);
   const userTopLists = [
     {
@@ -33,7 +32,6 @@ const User = () => {
     },
   ];
   useEffect(() => {
-    dispatch(getUser(accessToken));
     dispatch(getTopArtists(accessToken));
     dispatch(getTopTracks(accessToken));
   }, [accessToken, dispatch]);

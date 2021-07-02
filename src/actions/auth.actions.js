@@ -1,26 +1,18 @@
+import { createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const SPOTIFY_TOKEN = "SPOTIFY_TOKEN";
-
-export const SPOTIFY_LOGIN_BEGIN = "SPOTIFY_LOGIN_BEGIN";
-export const SPOTIFY_LOGIN_SUCCESS = "SPOTIFY_LOGIN_SUCCESS";
-export const SPOTIFY_LOGIN_FAILURE = "SPOTIFY_LOGIN_FAILURE";
+export const SPOTIFY_LOGIN_BEGIN = createAction("spotify/login/begin");
+export const SPOTIFY_LOGIN_SUCCESS = createAction("spotify/login/success");
+export const SPOTIFY_LOGIN_FAILURE = createAction("spotify/login/failure");
 
 export const login = (code) => async (dispatch) => {
-  dispatch({ type: SPOTIFY_LOGIN_BEGIN, payload: true });
+  dispatch(SPOTIFY_LOGIN_BEGIN("loading"));
 
   const response = await axios.post("http://localhost:9000/login", { code });
 
   try {
-    dispatch({
-      type: SPOTIFY_LOGIN_SUCCESS,
-      payload: response.data.accessToken,
-    });
-    dispatch({
-      type: SPOTIFY_TOKEN,
-      payload: response.data.refreshToken,
-    });
+    dispatch(SPOTIFY_LOGIN_SUCCESS(response.data.accessToken));
   } catch (err) {
-    dispatch({ type: SPOTIFY_LOGIN_FAILURE, payload: err.message });
+    dispatch(SPOTIFY_LOGIN_FAILURE(err.message));
   }
 };

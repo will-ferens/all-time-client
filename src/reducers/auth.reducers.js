@@ -1,42 +1,35 @@
+import { createReducer } from "@reduxjs/toolkit";
+
 import {
-  SPOTIFY_TOKEN,
   SPOTIFY_LOGIN_BEGIN,
   SPOTIFY_LOGIN_SUCCESS,
   SPOTIFY_LOGIN_FAILURE,
 } from "../actions/auth.actions";
 
 const initialState = {
-  loading: false,
+  loading: "idle",
   accessToken: null,
   refreshToken: null,
   error: null,
 };
 
-export default function authReducer(state = initialState, action) {
-  switch (action.type) {
-    case SPOTIFY_LOGIN_BEGIN:
-      return {
-        ...state,
-        loading: action.payload,
-      };
-    case SPOTIFY_LOGIN_SUCCESS:
+export const authReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(SPOTIFY_LOGIN_BEGIN, (state, action) => {
+      return { ...state, loading: action.payload };
+    })
+    .addCase(SPOTIFY_LOGIN_SUCCESS, (state, action) => {
       return {
         ...state,
         accessToken: action.payload,
-        loading: false,
+        loading: "fetched",
       };
-    case SPOTIFY_TOKEN:
-      return {
-        ...state,
-        refreshToken: action.payload,
-      };
-    case SPOTIFY_LOGIN_FAILURE:
+    })
+    .addCase(SPOTIFY_LOGIN_FAILURE, (state, action) => {
       return {
         ...state,
         error: action.payload,
-        loading: false,
+        loading: "failed",
       };
-    default:
-      return state;
-  }
-}
+    });
+});

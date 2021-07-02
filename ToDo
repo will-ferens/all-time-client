@@ -4,14 +4,13 @@
 [x] Styles
 [x] Make TopArtists reusable for tracks
 [x] past month, past 6 moths, all time
+[x] Make another theme
 
 [ ] pagination on lists
-
-[ ] Make another theme
 
 [ ] Launch
 
 [ ] Refactor 
-  [ ] actions / reducers 
+  [x] actions / reducers 
   [ ] look into redux toolkit / createSlice and createApi
   [ ] file architecture

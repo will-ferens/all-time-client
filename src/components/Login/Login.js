@@ -26,7 +26,7 @@ export const LoginLink = styled.a`
   text-decoration: none;
   transition: all 0.3s;
   background-color: ${highlightedFontColor};
-  border: 2px solid ${highlightedFontColor};
+  border: 1px solid ${highlightedFontColor};
   color: ${accentFontColor};
   &:hover {
     background-color: ${accentFontColor};

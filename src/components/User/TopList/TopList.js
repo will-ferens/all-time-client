@@ -56,6 +56,7 @@ export const Table = styled.table`
   thead {
     tr {
       th {
+        text-transform: uppercase;
         padding: ${boxPaddingWide};
         background: ${highlightedBackgroundColor};
         color: ${highlightedFontColor};

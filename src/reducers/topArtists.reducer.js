@@ -1,3 +1,5 @@
+import { createReducer } from "@reduxjs/toolkit";
+
 import {
   SPOTIFY_USER_ARTIST_BEGIN,
   SPOTIFY_USER_ARTIST_SUCCESS,
@@ -9,27 +11,15 @@ const initialState = {
   topArtists: [],
   error: null,
 };
-
-export default function userArtists(state = initialState, action) {
-  switch (action.type) {
-    case SPOTIFY_USER_ARTIST_BEGIN:
-      return {
-        ...state,
-        loading: "fetching",
-      };
-    case SPOTIFY_USER_ARTIST_SUCCESS:
-      return {
-        ...state,
-        topArtists: action.payload,
-        loading: "fetched",
-      };
-    case SPOTIFY_USER_ARTIST_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        loading: "failed",
-      };
-    default:
-      return state;
-  }
-}
+export const userTopArtists = createReducer(initialState, (builder) => {
+  builder
+    .addCase(SPOTIFY_USER_ARTIST_BEGIN, (state, action) => {
+      return { ...state, loading: action.payload };
+    })
+    .addCase(SPOTIFY_USER_ARTIST_SUCCESS, (state, action) => {
+      return { ...state, topArtists: action.payload, loading: "fetched" };
+    })
+    .addCase(SPOTIFY_USER_ARTIST_FAILURE, (state, action) => {
+      return { ...state, error: action.payload, loading: "failed" };
+    });
+});
