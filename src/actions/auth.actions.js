@@ -8,7 +8,9 @@ export const SPOTIFY_LOGIN_FAILURE = createAction("spotify/login/failure");
 export const login = (code) => async (dispatch) => {
   dispatch(SPOTIFY_LOGIN_BEGIN("loading"));
 
-  const response = await axios.post("http://localhost:9000/login", { code });
+  const response = await axios.post("https://all-time.herokuapp.com/login", {
+    code,
+  });
 
   try {
     dispatch(SPOTIFY_LOGIN_SUCCESS(response.data.accessToken));

@@ -9,8 +9,6 @@ import {
   accentFontColor,
 } from "../../../themes/themes";
 
-import { border } from "../../../constants/styles";
-
 const RangeFilterContainer = styled.div`
   margin: 12px 0;
 `;
