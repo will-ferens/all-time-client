@@ -8,6 +8,9 @@ export const TableRow = styled.tr`
   border-radius: 4px;
   td {
     padding: 12px 24px;
+    &:first-child {
+      width: 30%;
+    }
   }
 `;
 export const InfoCellWrapper = styled.div`
@@ -18,13 +21,22 @@ export const InfoCellWrapper = styled.div`
     border-radius: 4px;
     margin-right: 16px;
   }
-  .track-artists {
+  .item-info {
     align-self: center;
+    p {
+      font-weight: 700;
+    }
+    span {
+      font-weight: 500;
+      color: #6b7280;
+    }
   }
 `;
 export const PositionWrapper = styled.div`
   display: flex;
   justify-content: center;
+  font-weight: 700;
+  color: #6b7280;
 `;
 
 const ListItem = ({ item, album, artists, i }) => {
@@ -43,14 +55,19 @@ const ListItem = ({ item, album, artists, i }) => {
       </td>
       <td>
         <InfoCellWrapper>
-          {artistImage ? <img src={artistImage} alt={item.name} /> : null}
-          {albumImage ? <img src={albumImage} alt={album.name} /> : null}
-          <div className="track-artists">
+          {artistImage ? (
+            <img src={artistImage} alt={item.name} />
+          ) : (
+            <img src={albumImage} alt={album.name} />
+          )}
+          <div className="item-info">
             <p>{item.name}</p>
             {artists
-              ? artists.map((artist, i) => {
+              ? artists.map((artist) => {
                   return (
-                    <span key={`artists${item.id}${i}`}>{artist.name}</span>
+                    <span key={`artists${item.id}${artist.name}`}>
+                      {artist.name}&nbsp;
+                    </span>
                   );
                 })
               : null}

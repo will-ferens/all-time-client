@@ -20,10 +20,13 @@ export const TopListContainer = styled.div`
   flex-direction: column;
 `;
 export const TopListHeader = styled.h2`
-  padding: 24px 12px 23px 12px;
+  padding: 23px 12px 23px 12px;
   background: ${highlightedBackgroundColor};
   color: ${highlightedFontColor};
   border-bottom: ${border}${highlightedBorder};
+  border-top: ${border}${highlightedBorder};
+  &:last-child {
+  }
   @media ${mediaQueries.laptop} {
     text-align: center;
   }
@@ -41,6 +44,7 @@ export const Table = styled.table`
   align-self: center;
   width: 80%;
   border: ${border}${highlightedBorder};
+  margin-bottom: 42px;
   thead {
     tr {
       th {
@@ -84,13 +88,15 @@ const TopList = ({ list, listInfo, theme }) => {
         </thead>
         <tbody>
           {list.map((item, index) => {
+            let album = item.album ? item.album : false;
+            let artists = item.artists ? item.artists : false;
             return (
               <ListItem
                 i={index}
                 key={item.id}
                 item={item}
-                album={item.album ? item.album : false}
-                artists={item.artists ? item.artists : false}
+                album={album}
+                artists={artists}
                 theme={theme}
               />
             );
