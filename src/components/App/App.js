@@ -42,25 +42,46 @@ const Container = styled.div`
 
 const App = () => {
   const dispatch = useDispatch();
+  const loginStatus = useSelector((state) => state.authReducer.loading);
   const accessToken = useSelector((state) => state.authReducer.accessToken);
+  const error = useSelector((state) => state.authReducer.error);
   const theme = useSelector((state) => state.themeReducer.theme);
-
   let history = useHistory();
+  let content;
+
   useEffect(() => {
     if (!accessToken && code) {
       dispatch(login(code));
       history.push("/");
     }
   }, [accessToken, dispatch, history]);
-
-  return (
-    <ThemeProvider theme={{ theme: theme }}>
-      <Container navLayout={accessToken ? true : false}>
-        {accessToken ? <Nav /> : null}
-        {accessToken ? <User /> : <Login />}
+  if (loginStatus === "idle") {
+    content = (
+      <Container navLayout={false}>
+        <Login />
       </Container>
-    </ThemeProvider>
-  );
+    );
+  } else if (loginStatus === "loading") {
+    content = (
+      <Container navLayout={false}>
+        <div>Loading...</div>
+      </Container>
+    );
+  } else if (loginStatus === "fetched" && accessToken) {
+    content = (
+      <Container navLayout={true}>
+        <Nav />
+        <User />
+      </Container>
+    );
+  } else if (loginStatus === "failed") {
+    content = (
+      <Container navLayout={false}>
+        <div>{error}</div>
+      </Container>
+    );
+  }
+  return <ThemeProvider theme={{ theme: theme }}>{content}</ThemeProvider>;
 };
 
 export default App;

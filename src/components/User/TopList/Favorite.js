@@ -33,6 +33,9 @@ export const HoverTitleWrapper = styled.div`
   span {
     padding-right: 4px;
   }
+  @media ${mediaQueries.mobile} {
+    display: none;
+  }
 `;
 export const FavoriteWrapper = styled.article`
   position: relative;
