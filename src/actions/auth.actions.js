@@ -1,7 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 import axios from "axios";
-const loginUrl = "https://all-time.herokuapp.com/login";
-// const loginUrl = "https://all-time.herokuapp.com/dev/login";
+const loginUrl = process.env.REACT_APP_LOGIN_URL;
 export const SPOTIFY_LOGIN_BEGIN = createAction("spotify/login/begin");
 export const SPOTIFY_LOGIN_SUCCESS = createAction("spotify/login/success");
 export const SPOTIFY_LOGIN_FAILURE = createAction("spotify/login/failure");
