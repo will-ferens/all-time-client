@@ -10,7 +10,7 @@ import { mediaQueries } from "../../constants/styles";
 import Nav from "../Nav/Nav";
 import User from "../User/User";
 import Login from "../Login/Login";
-
+import LoadingSpinner from "../Lib/LoadingSpinner";
 // URL param on new login
 const code = new URLSearchParams(window.location.search).get("code");
 
@@ -64,7 +64,7 @@ const App = () => {
   } else if (loginStatus === "loading") {
     content = (
       <Container navLayout={false}>
-        <div>Loading...</div>
+        <LoadingSpinner />
       </Container>
     );
   } else if (loginStatus === "fetched" && accessToken) {
